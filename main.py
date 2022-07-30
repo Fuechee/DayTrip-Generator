@@ -6,30 +6,38 @@ destinations = ['Tokyo, Japan', 'Paris, France', 'Seoul, South Korea', 'Syndey, 
 
 yes = False
 
-while yes == False:
-    destination = random.choice(destinations)
-    location = input(f'{destination} has been selected for your destination. Are you okay with this destination? Enter y/n: ')
-    if location == 'y':
-        print('Awesome, lets continue with deciding a mode of transportation.')
-        yes == True
-        break
-    else:
-        print('No worries, we can figure out another location.')
+def determine_destination(destination):
+    while yes == False:
+        destination = random.choice(destinations)
+        location = input(f'{destination} has been selected for your destination. Are you okay with this destination? Enter y/n: ')
+        if location == 'y':
+            print('Awesome, lets continue with deciding a mode of transportation.')
+            yes == True
+            break
+        else:
+            print('No worries, we can figure out another location.')
+    return destination
 
-# #Transportation
-transportations = ['using a rental car', 'going on a train', 'using a rental bike', 'walking', ' using a bus']
+destination = determine_destination(destinations)
+
+#Transportation
+transportations = ['a rental car', 'going on a train', 'a rental bike', 'walking', 'using a bus']
 
 yes = False
 
-while yes == False:
-    transportation = random.choice(transportations)
-    mode_of_transportation = input(f'{transportation} has been selected for your mode of transportation. Are you okay with this mode of transportaton? Enter y/n: ')
-    if mode_of_transportation == 'y':
-        print("Awesome, let's continue with deciding a restaurant to dine in.")
-        yes == True
-        break
-    else:
-        print('No worries, we can figure out another mode of transportation.')
+def determin_transportation(transportation):
+    while yes == False:
+        transportation = random.choice(transportations)
+        mode_of_transportation = input(f'{transportation} has been selected for your mode of transportation. Are you okay with this mode of transportaton? Enter y/n: ')
+        if mode_of_transportation == 'y':
+            print("Awesome, let's continue with deciding a restaurant to dine in.")
+            yes == True
+            break
+        else:
+            print('No worries, we can figure out another mode of transportation.')
+    return transportation
+
+transportation = determin_transportation(transportations)
 
 #Restaurants
 japan_restaurant = ['Sukiyabashi Jiro Roppongi', 'Den', 'Bistro Shirube', 'Takahashi', 'Kanda Matsuya', 'Nigyocho Imahan', 'Kaneko Hannosuke'] 
@@ -44,31 +52,29 @@ confirmed_restaurants = japan_restaurant, new_york_restaurant, france_restaurant
 
 yes = False
 
-def determine_restaurant(destination,confirmed_restaurant):
-    if destination == "Tokyo, Japan":
-        confirmed_restaurant = random.choice(japan_restaurant)
-    elif destination == "Paris, France":
-        confirmed_restaurant = random.choice(france_restaurant)
-    elif destination == "Seoul, South Korea":
-        confirmed_restaurant = random.choice(korea_restaurant)
-    elif destination == "Syndey, Australia":
-        confirmed_restaurant = random.choice(australia_restaurant)
-    elif destination == "Honolulu, Hawaii":
-        confirmed_restaurant = random.choice(hawaii_restaurant)
-    elif destination == "New York City, New York":
-        confirmed_restaurant = random.choice(new_york_restaurant)
-    elif destination == "Barcelona, Spain":
-        confirmed_restaurant = random.choice(spain_restaurant)
-    return confirmed_restaurant
-
-while yes == False:
-    restaurant = input(f'{determine_restaurant(destination, confirmed_restaurants)} has been selected as your restaurant. Are you okay with this restaurant? Enter y/n: ')
-    if restaurant == 'y':
-        print("Awesome, let's continue with deciding a entertainment activity.")
-        yes == True
-        break
-    else:
-        print('No worries, we can figure out another restaurant.')
+def determine_restaurant(destination,restaurant):
+    while yes == False:
+        if destination == "Tokyo, Japan":
+            confirmed_restaurant = random.choice(japan_restaurant)
+        elif destination == "Paris, France":
+            confirmed_restaurant = random.choice(france_restaurant)
+        elif destination == "Seoul, South Korea":
+            confirmed_restaurant = random.choice(korea_restaurant)
+        elif destination == "Syndey, Australia":
+            confirmed_restaurant = random.choice(australia_restaurant)
+        elif destination == "Honolulu, Hawaii":
+            confirmed_restaurant = random.choice(hawaii_restaurant)
+        elif destination == "New York City, New York":
+            confirmed_restaurant = random.choice(new_york_restaurant)
+        elif destination == "Barcelona, Spain":
+            confirmed_restaurant = random.choice(spain_restaurant)
+        restaurant = input(f'{confirmed_restaurant} has been selected as your restaurant. Are you okay with this restaurant? Enter y/n: ')
+        if restaurant == 'y':
+            print("Awesome, let's continue with deciding a entertainment activity.")
+            yes == True
+            return confirmed_restaurant
+        else:
+            print('No worries, we can figure out another restaurant.')
 
 confirmed_restaurant = determine_restaurant(destination, confirmed_restaurants)
 
@@ -85,48 +91,53 @@ confirmed_entertainments = japan_entertainment, new_york_entertainment, france_e
 
 yes = False
 
-def determine_entertainment(destination, confirmed_entertainment):
-    if destination == "Tokyo, Japan":
-        confirmed_entertainment = random.choice(japan_entertainment)
-    elif destination == "Paris, France":
-        confirmed_entertainment = random.choice(france_entertainment)
-    elif destination == "Seoul, South Korea":
-        confirmed_entertainment = random.choice(korea_entertainment)
-    elif destination == "Syndey, Australia":
-        confirmed_entertainment = random.choice(australia_entertainment)
-    elif destination == "Honolulu, Hawaii":
-        confirmed_entertainment = random.choice(hawaii_entertainment)
-    elif destination == "New York City, New York":
-        confirmed_entertainment = random.choice(new_york_entertainment)   
-    elif destination == "Barcelona, Spain":
-        confirmed_entertainment = random.choice(spain_entertainment) 
-    return confirmed_entertainment
-
-while yes == False:
-    restaurant = input(f'{determine_entertainment(destination, confirmed_entertainments)} has been selected as your entertainment activity. Are you okay with this entertainment activity? Enter y/n: ')
-    if restaurant == 'y':
-        print("Awesome, let's continue confirming your vacation plan.")
-        yes == True
-        break
-    else:
-        print('No worries, we can figure out another activity.')
+def determine_entertainment(destination,entertainment):
+    while yes == False:
+        if destination == "Tokyo, Japan":
+            confirmed_entertainment = random.choice(japan_entertainment)
+        elif destination == "Paris, France":
+            confirmed_entertainment = random.choice(france_entertainment)
+        elif destination == "Seoul, South Korea":
+            confirmed_entertainment = random.choice(korea_entertainment)
+        elif destination == "Syndey, Australia":
+            confirmed_entertainment = random.choice(australia_entertainment)
+        elif destination == "Honolulu, Hawaii":
+            confirmed_entertainment = random.choice(hawaii_entertainment)
+        elif destination == "New York City, New York":
+            confirmed_entertainment = random.choice(new_york_entertainment)   
+        elif destination == "Barcelona, Spain":
+            confirmed_entertainment = random.choice(spain_entertainment) 
+        entertainment = input(f'{confirmed_entertainment} has been selected as your entertainment activity. Are you okay with this entertainment activity? Enter y/n: ')
+        if entertainment == 'y':
+            print("Awesome, let's continue confirming your vacation plan.")
+            yes == True
+            return confirmed_entertainment
+        else:
+            print('No worries, we can figure out another activity.')
 
 confirmed_entertainment = determine_entertainment(destination, confirmed_entertainments)
 
 #Confirming choices
-print("The Day Trip Generator has finished creating your day trip. Now let's confirm that this is the trip you wanted.")
-print('The trip we have generated for you is: ')
-print(f'Destination: {destination}')
-print(f'Transportation: {transportation}')
-print(f'Entertainment: {confirmed_entertainment}')
-print(f'Restaurant: {confirmed_restaurant}')
-confirm_choice = input('Would you like to finalize this trip? Enter y/n: ')
-if confirm_choice == 'y':
-    print(f'Your vacation plans will be going to {destination}, and will be {transportation}. You will be spending your day touring {confirmed_entertainment} and will be ending your night, dining at {confirmed_restaurant}.')
-else:
-    print('No worries, we can go back and look over the choices again.')
+yes = False
 
+def confirming_choices ():
+    print("The Day Trip Generator has finished creating your day trip. Now let's confirm that this is the trip you wanted.")
+    print('The trip we have generated for you is: ')
+    print(f'Destination: {destination}')
+    print(f'Transportation: {transportation}')
+    print(f'Entertainment: {confirmed_entertainment}')
+    print(f'Restaurant: {confirmed_restaurant}')
 
-
-
-
+while yes == False:
+    confirm_choice = input('Would you like to finalize this trip? Enter y/n: ')
+    if confirm_choice == 'y':
+        print(f'Your vacation plans will be going to {destination}, and will be {transportation}. You will be spending your day touring {confirmed_entertainment} and will be ending your night, dining at {confirmed_restaurant}.')
+        yes == True
+        break
+    else:
+        print('No worries, we can go back and look over the choices again.')
+        destination = determine_destination(destination)
+        transportation = determin_transportation(transportations)
+        confirmed_restaurant = determine_restaurant(destination, confirmed_restaurants)
+        confirmed_entertainment = determine_entertainment(destination, confirmed_entertainments)
+        confirming_choices ()
